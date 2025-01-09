@@ -35,18 +35,18 @@ namespace Company.Function
 
         [Function("HttpExample")]
         public static async Task<OutputType> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "PostFunction")] HttpRequestData req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post","get", Route = "PostFunction")] HttpRequestData req,
                 FunctionContext executionContext)
         {
             var logger = executionContext.GetLogger("PostToDo");
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            ToDoItem toDoItem = JsonConvert.DeserializeObject<ToDoItem>(requestBody);
-
+            //ToDoItem toDoItem = JsonConvert.DeserializeObject<ToDoItem>(requestBody);
+            ToDoItem toDoItem = new ToDoItem();
             // generate a new id for the todo item
             toDoItem.Id = Guid.NewGuid();
-            toDoItem.title = "asdsadsada";
+            toDoItem.title = "asdsadsada";  
             // set Url from env variable ToDoUri
             toDoItem.url = toDoItem.Id.ToString();
 
@@ -55,11 +55,13 @@ namespace Company.Function
             {
                 toDoItem.completed = false;
             }
-            
+            var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
+            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+            await response.WriteStringAsync("message");
             return new OutputType()
             {
                 ToDoItem = toDoItem,
-                HttpResponse = req.CreateResponse(System.Net.HttpStatusCode.Created)
+                HttpResponse = response
             };
         }
     }
