@@ -1,0 +1,15 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=khangresource8290;AccountKey=NvW3W27Tek9SmU7iv68C7c7CyFtqx+Ou4dD4B+sDIaShAw9OR8VaPQ0TrkpCjfd030t9eAIWnwj0+AStmF97jQ==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "FUNCTIONS_EXTENSION_VERSION": "~4",
+    "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=49a15404-dd50-4527-8813-9028a03a6b4b;IngestionEndpoint=https://southeastasia-1.in.applicationinsights.azure.com/;LiveEndpoint=https://southeastasia.livediagnostics.monitor.azure.com/;ApplicationId=bca86b4e-8031-4395-86a0-4c2e864e9aca",
+    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "DefaultEndpointsProtocol=https;AccountName=khangresource8290;AccountKey=NvW3W27Tek9SmU7iv68C7c7CyFtqx+Ou4dD4B+sDIaShAw9OR8VaPQ0TrkpCjfd030t9eAIWnwj0+AStmF97jQ==;EndpointSuffix=core.windows.net",
+    "WEBSITE_CONTENTSHARE": "khangtestfunctionappbbf1",
+    "SqlConnectionString": "Server=tcp:nois-database.database.windows.net,1433;Initial Catalog=nois-database;Persist Security Info=False;User ID=admin-nois;Password=Sm@rt2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+    "WEBSITE_RUN_FROM_PACKAGE": "1",
+    "EventHubConnection": "Endpoint=sb://ihsuprodsgres005dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=iImfzz8NQTHFtV/Q3KGY25yIgoAyUJNWgAIoTNWPWWA=;EntityPath=iothub-ehub-khangiothu-56966406-369e1bd565"
+  }
+}
