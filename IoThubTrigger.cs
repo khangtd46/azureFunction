@@ -39,10 +39,13 @@ namespace Company.Function
                         VALUES (@LocalTimestamp, @PlannedCut, @TotalCut, @GoodCut, @TargetSpeed, @ActualSpeed, @Uptime, 
                                 @EmployeeID, @MachineID, @BatchID, @Downtime, @DowntimeCode, @BadCut, @BadCutCode)";
 
+
+            var gmtPlus7DateTime = GMT7Conversion(data.LocalTimestamp);
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@LocalTimestamp", (object?)data.LocalTimestamp ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@LocalTimestamp", (object?)gmtPlus7DateTime.Value ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@PlannedCut", (object?)data.PlannedCut ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@TotalCut", (object?)data.TotalCut ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@GoodCut", (object?)data.GoodCut ?? DBNull.Value);
@@ -55,10 +58,31 @@ namespace Company.Function
                 cmd.Parameters.AddWithValue("@Downtime", (object?)data.Downtime ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@DowntimeCode", (object?)data.DowntimeCode ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@BadCut", (object?)data.BadCut ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@BadCutCode", (object?)data.BadCutCode ?? DBNull.Value); 
+                cmd.Parameters.AddWithValue("@BadCutCode", (object?)data.BadCutCode ?? DBNull.Value);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
+            _logger.LogInformation(gmtPlus7DateTime.Value.ToString());
+        }
+
+        public DateTime? GMT7Conversion(DateTime? dateTime)
+        {
+            if (!dateTime.HasValue){
+                return null;
+            }
+            // Parse the timestamp into a DateTimeOffset object
+            DateTimeOffset dateTimeOffset = DateTimeOffset.Parse(dateTime.Value.ToString());
+
+            // Define the GMT+7 time zone
+            TimeZoneInfo gmtPlus7 = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time"); // GMT+7
+
+            // Convert the DateTimeOffset to GMT+7
+            DateTimeOffset gmtPlus7Time = TimeZoneInfo.ConvertTime(dateTimeOffset, gmtPlus7);
+
+            // Extract the DateTime part (without offset)
+            DateTime gmtPlus7DateTime = gmtPlus7Time.DateTime;
+
+            return gmtPlus7DateTime;
         }
     }
 }
