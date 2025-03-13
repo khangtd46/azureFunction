@@ -10,6 +10,6 @@
     "WEBSITE_CONTENTSHARE": "khangtestfunctionappbbf1",
     "SqlConnectionString": "Server=tcp:nois-database.database.windows.net,1433;Initial Catalog=nois-optix-iothub;Persist Security Info=False;User ID=admin-nois;Password=Sm@rt2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
     "WEBSITE_RUN_FROM_PACKAGE": "1",
-    "EventHubConnection": "Endpoint=sb://ihsuprodsgres005dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=iImfzz8NQTHFtV/Q3KGY25yIgoAyUJNWgAIoTNWPWWA=;EntityPath=iothub-ehub-khangiothu-56966406-369e1bd565"
+    "EventHubConnection": "Endpoint=sb://ihsuprodsgres003dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=sB+kt076IYxA4isxxWLO4qa07fxu/HOP/AIoTAVMiIQ=;EntityPath=iothub-ehub-nois-iothu-57025806-cb0f4231d9"
   }
 }

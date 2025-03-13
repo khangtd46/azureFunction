@@ -27,6 +27,8 @@ namespace Company.Function
                 {
                     string connectionString = Environment.GetEnvironmentVariable("SqlConnectionString");
                     InsertIntoDatabase(connectionString, data);
+                    string connectionString1 = Environment.GetEnvironmentVariable("SqlConnectionString1");
+                    InsertIntoDatabase(connectionString1, data);
                 }
             }
         }
